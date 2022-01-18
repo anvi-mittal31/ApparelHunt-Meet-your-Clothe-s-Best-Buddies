@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enrollment Form</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://kit.fontawesome.com/66eb956f0d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="wrapper" id="reg-form">
+<h1><em>Enrollment Form </em></h1>
+<p>Sign in to get yourself enrolled! <i class="fas fa-sign-in-alt fa-1x"></i></p>
+<form action="SignUp.php" method="post">
+    <div class="form">
+    <div class="inputfield">
+	<label for="name">Name of Student:* </label>
+	<input class="btn" type="text" name="name" placeholder="Enter your name" required><br><br><br>
+    </div>
+    <div class="inputfield">
+	<label for="pass">Enter Password:* </label>
+	<input class="btn" type="password" name="pass" placeholder="Enter your password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required><br><br><br>
+    </div>
+    <div class="inputfield">
+	<label for="pass">Confirm Password:* </label>
+    <input class="btn" type="password" name="cpass" placeholder="Enter your password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required><br><br>    </div>
+    <div class="inputfield">
+	<label for="birthday">Enter your birthday:</label>
+	<input class="btn" type="date" id="birthday" name="birthday"><br><br><br>
+    </div>
+    <div class="inputfield">
+	<label for="gender">Gender:</label>
+	<input class="btn" type="radio" name="gender" value="m">
+	<label class="gender_value" for="gender-male">Male</label>
+	<input class="btn" type="radio" name="gender" value="f">
+	<label class="gender_value" for="gender-female">Female</label>
+    </div>
+	<div class="inputfield">
+	<label for="Country">Country: </label>
+	<select name="country">
+	<option value="default" font-size=large>Select</option>
+	<option value="AF">Afghanistan</option>
+    <option value="BY">Belarus</option>
+    <option value="BE">Belgium</option>
+    <option value="CA">Canada</option>
+    <option value="CO">Colombia</option>
+    <option value="CU">Cuba</option>
+    <option value="CW">Curacao</option>
+    <option value="CY">Cyprus</option>
+    <option value="CZ">Czech Republic</option>
+    <option value="DK">Denmark</option>
+    <option value="GH">Ghana</option>
+    <option value="GI">Gibraltar</option>
+    <option value="GR">Greece</option>
+    <option value="HK">Hong Kong</option>
+    <option value="HU">Hungary</option>n>
+    <option value="IL">Israel</option>
+    <option value="IN">India</option>
+    <option value="IT">Italy</option>
+    <option value="JM">Jamaica</option>
+    <option value="JP">Japan</option>
+    <option value="XK">Kosovo</option>
+    <option value="KW">Kuwait</option>
+    <option value="MY">Malaysia</option>
+    <option value="MV">Maldives</option>
+    <option value="MU">Mauritius</option>
+    <option value="NO">Norway</option>
+    <option value="OM">Oman</option>
+    <option value="PL">Poland</option>
+    <option value="QA">Qatar</option>
+    <option value="ZM">Zambia</option>
+    <option value="ZW">Zimbabwe</option>
+		</select>
+	   </div>
+     <!-- <div class="inputfield"><br>
+      <label for="Month">Courses: </label>
+      <select name="courses">
+      <option value="default" font-size=large>Select</option>
+      <option value="jan">B.Tech</option>
+      <option value="feb">B.Arch</option>
+      <option value="june">B.Sc</option>
+      <option value="march">M.Sc</option>
+      <option value="april">B.Des</option>
+      </select>
+       </div><br><br> -->
+       <div class="inputfield">
+       <label for="name">Phone Number:* </label>
+       <input class="btn" type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter your number" required><br><br><br>
+       </div>
+       <div class="inputfield">
+       <label for="emai">Email ID:* </label>
+       <input class="btn" type="email" placeholder="Enter your e-mail" name="email" required><br><br><br>
+       </div>
+       <div class="inputfield">
+       <label for="instructions">Instructions</label>
+       <textarea id="w3review" name="instructions" rows="4" cols="70"></textarea><br><br><br>
+        </div>
+        <div class="inputfield terms">
+            <label class="check">
+              <input type="checkbox" required>
+              <span class="checkmark"></span>
+            </label>
+            <p>I hereby declare that I have proof read the above information</p>
+         </div> 
+        <div class="inputfield"> 
+        <button type="submit" name="submit" class="submit">SUBMIT</button><br>
+        </div>
+    </div>
+    </form>
+</div>
+<script>
+    var myInput = document.getElementById("password");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    myInput.onclick = function () {
+      document.getElementById("message").style.display = "block";
+    }
+
+    myInput.onblur = function () {
+      document.getElementById("message").style.display = "none";
+    }
+
+    myInput.onkeyup = function () {
+
+      var lowerCaseLetters = /[a-z]/g;
+      if (myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+      var upperCaseLetters = /[A-Z]/g;
+      if (myInput.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if (myInput.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      if (myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    var Input = document.getElementById("phone");
+    Input.onkeyup = function () {
+      if (Input.value.length >= 11) {
+        alert("Enter 10 Number only");
+      } else {
+        
+      }
+    }
+    // var zipcode = document.getElementById("zipcode");
+    // zipcode.onkeyup = function () {
+    //   if (zipcode.value.length >= 6) {
+    //     alert("Wrong zipcode");
+    //   } else {
+        
+    //   }
+    // }
+    function EnableDisableTextBox(check) {
+        var submit = document.getElementById("submit");
+        submit.disabled = check.checked ? false : true;
+        if (!submit.disabled) {
+            submit.focus();
+            document.getElementById("submit").style.color = "white";
+        }
+    }
+  </script>
+</body>
+</html>
